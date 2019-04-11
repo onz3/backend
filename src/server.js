@@ -38,5 +38,5 @@ app.use(express.urlencoded({ extended: true })); //permite que vc envie arquivos
 app.use("/files", express.static(path.resolve(__dirname, "..", "tmp"))); //toda vez que acessar essa rota busca os arquivos fisicos da pasta tmp
 app.use(require("./routes")); //utilizar arquivo de rota separado
 
-
-server.listen(3333);  //passando uma porta para rodar o servidor node, usando SERVER  para aceitar requisião http e socket
+// process.env para o servidor Heroku poder escolher a porta na hora de rodar o app
+server.listen(process.env.PORT || 3333);  //passando uma porta para rodar o servidor node, usando SERVER  para aceitar requisião http e socket
