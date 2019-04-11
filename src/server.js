@@ -8,7 +8,7 @@ app.use(cors()); //define que todos podem utilizar a aplicação mesmo em outro 
 
 
 const server = require("http").Server(app); //socket para utilizar em tempo real o app
-const io = require('soquet.io')(server); // " linha 25"
+const io = require('socket.io')(server); // " linha 25"
 
 
 //conectar usuario numa sala especifica, sem aparecer notificação que alguem postou algo novo
