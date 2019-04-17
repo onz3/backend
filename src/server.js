@@ -7,7 +7,7 @@ const app = express();  //criando variavel do nosso app
 app.use(cors()); //define que todos podem utilizar a aplicação mesmo em outro ip
 
 
-const server = require("http").Server(app); //socket para utilizar em tempo real o app
+const server = require('http').Server(app); //socket para utilizar em tempo real o app
 const io = require('socket.io')(server); // " linha 25"
 
 
@@ -34,6 +34,11 @@ app.use((req, res, next) =>{
 //})
 
 app.use(express.json());  //serve para requisições rest, usando json
+//app.use(function (req, res, next) {
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  next();
+//});
 app.use(express.urlencoded({ extended: true })); //permite que vc envie arquivos nas requisiçoes
 app.use("/files", express.static(path.resolve(__dirname, "..", "tmp"))); //toda vez que acessar essa rota busca os arquivos fisicos da pasta tmp
 app.use(require("./routes")); //utilizar arquivo de rota separado
